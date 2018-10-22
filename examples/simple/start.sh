@@ -14,3 +14,24 @@ helm plugin install https://github.com/viglesiasce/helm-gcs.git --version v0.1.1
 gsutil mb -l us-central1 gs://$BUCKET
 helm gcs init gs://$BUCKET
 
+
+# Install
+
+# helm install --dry-run --debug ./nginx
+helm install --debug ./nginx
+
+
+# Now
+kubectl port-forward service/looming-iguana-nginx 8888:8888
+
+# Edit
+kubectl edit deployments/looming-iguana-nginx
+
+# Example Delete
+#   Napoleon:simple mchirico$ helm ls --short
+#      looming-iguana
+#   Napoleon:simple mchirico$ helm delete looming-iguana
+#      release "looming-iguana" deleted
+
+
+
