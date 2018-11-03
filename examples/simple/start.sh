@@ -1,5 +1,6 @@
 #!/bin/bash
-gcloud container clusters create concourse --image-type ubuntu     --scopes cloud-source-repos-ro,storage-full
+gcloud container clusters create concourse --image-type ubuntu  --scopes cloud-source-repos-ro,storage-full
+gcloud container clusters get-credentials concourse
 
 kubectl create clusterrolebinding user-admin-binding --clusterrole=cluster-admin --user=$(gcloud config get-value account)
 kubectl create serviceaccount tiller --namespace kube-system
@@ -20,6 +21,9 @@ helm gcs init gs://$BUCKET
 # helm install --dry-run --debug ./nginx
 helm install --debug ./nginx
 
+
+# redis
+helm install stable/redis
 
 # Now
 kubectl port-forward service/looming-iguana-nginx 8888:8888
