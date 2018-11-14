@@ -53,17 +53,6 @@ spec:
         prometheus.io/port: "8000"
     spec:
       terminationGracePeriodSeconds: 0
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              podAffinityTerm:
-                labelSelector:
-                  matchExpressions:
-                    - key: "app"
-                      operator: In
-                      values:
-                        - bookkeeper
       initContainers:
         - name: bookie-metaformat
           image: apachepulsar/pulsar:latest
