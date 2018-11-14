@@ -64,6 +64,7 @@ spec:
                       operator: In
                       values:
                         - bookkeeper
+                topologyKey: "kubernetes.io/hostname"
       initContainers:
         - name: bookie-metaformat
           image: apachepulsar/pulsar:latest
